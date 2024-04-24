@@ -19,6 +19,7 @@ class Database {
     await crearDB (conn);
     await creartablausuario (conn);
     await creartablavehiculo(conn);
+    await creartablaAdministrador(conn);
     await conn.close();
   } catch(e){
     print(e);
@@ -58,12 +59,22 @@ class Database {
      await conn.query('''CREATE TABLE IF NOT EXISTS vehiculos(
       idvehiculo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
       nombre VARCHAR(50) NOT NULL UNIQUE,
-      ubicacion VARCHAR (50) NOT NULL,
       fechaAlquiler VARCHAR (50) NOT NULL,
-      tipo VARCHAR(50) NOT NULL,
       capacidad INT NOT NULL
     )''');
     print ('Tabla vehiculo creada');
+
+  }
+
+  creartablaAdministrador (conn)async {
+    
+     await conn.query('''CREATE TABLE IF NOT EXISTS administradores(
+      idadministrador INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      nombre VARCHAR(50) NOT NULL UNIQUE,
+      password VARCHAR(10) NOT NULL
+    )''');
+    print ('Tabla administradores creada');
+     
 
   }
 }

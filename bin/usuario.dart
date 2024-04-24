@@ -7,7 +7,7 @@ String? nombre;
 int? idusuario;
 String? password;
 
-//CONSTRUCTORES
+
 Usuario();
 
  Usuario.fromMap(ResultRow map){
@@ -16,7 +16,7 @@ Usuario();
     this.password = map ['password'];
 }
 
-//METODOS
+
 loginUsuario() async{
 var conn = await Database().conexion();
 try{
